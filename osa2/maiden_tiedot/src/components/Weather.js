@@ -16,17 +16,17 @@ const Weather = ({country}) => {
         })
     }, [])
 
-    //console.log(weatherInfo)
+    //console.log(weatherInfo) ei toimi hähäää!!
 
     return (
         <div>
             <h1>Weather in {country.capital}</h1>
             {
-                <p>temperature {Math.floor(weatherInfo.main.temp - 273)} degrees Celsius</p>
+                //<p>temperature {Math.floor(weatherInfo.main.temp - 273)} degrees Celsius</p>
             }
             <img src="http://openweathermap.org/img/wn/10d@2x.png" alt=""/>
             {
-                <p>wind {weatherInfo.wind.speed} m/s</p>
+                //<p>wind {weatherInfo.wind.speed} m/s</p>
             }
         </div>
     )
