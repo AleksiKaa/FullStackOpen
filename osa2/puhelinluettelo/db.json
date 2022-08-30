@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "name": "Atte Tamminen",
-      "number": "1231231234",
-      "id": 3
-    },
-    {
       "name": "Arto",
       "number": "1234",
       "id": 4
@@ -19,11 +14,6 @@
       "name": "Kirsi",
       "number": "12312",
       "id": 6
-    },
-    {
-      "name": "Alekdi",
-      "number": "asdasd",
-      "id": 7
     }
   ]
 }
