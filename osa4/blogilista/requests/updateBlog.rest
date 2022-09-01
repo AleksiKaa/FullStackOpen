@@ -1,0 +1,14 @@
+PUT http://localhost:3003/api/blogs/630f578537bd3d2c9d501bf4
+Content-Type: application/json
+
+{
+    "likes": 1212
+}
+
+### bad update
+PUT http://localhost:3003/api/blogs/630f5
+Content-Type: application/json
+
+{
+    "likes": 1234
+}

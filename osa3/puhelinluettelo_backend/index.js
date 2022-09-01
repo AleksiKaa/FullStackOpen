@@ -81,9 +81,6 @@ app.put('/api/persons/:id', (req, res, next) => {
     number: body.number
   }
 
-  console.log(req.params.id)
-  console.log(number)
-
   Phonenumber.findByIdAndUpdate(req.params.id, number, { new: true })
     .then(updated => {
       res.json(updated)
