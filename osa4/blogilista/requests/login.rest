@@ -2,8 +2,8 @@ POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
-    "username": "test1",
-    "password": "test123"
+    "username": "jeesus",
+    "password": "mooses"
 }
 ### get users
 GET http://localhost:3003/api/users
@@ -13,7 +13,7 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username": "test1",
-    "name": "Test",
-    "password": "test123"
+    "username": "jeesus",
+    "name": "jesse",
+    "password": "mooses"
 }
