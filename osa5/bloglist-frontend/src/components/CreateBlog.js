@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import blogService from '../services/blogs'
 
-const CreateBlog = ({ setVisible, setBlogs, setErrorMessage }) => {
+const CreateBlog = ({ setVisible, setErrorMessage, addBlog }) => {
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -18,14 +17,13 @@ const CreateBlog = ({ setVisible, setBlogs, setErrorMessage }) => {
         url: url
       }
 
-      await blogService.create(blog)
+      await addBlog(blog)
 
       setVisible.current.toggleVisibility()
 
       setTitle('')
       setAuthor('')
       setUrl('')
-      setBlogs(await blogService.getAll())
       setErrorMessage(`${title} by ${author} added`)
       setTimeout(() => {
         setErrorMessage(null)
@@ -46,24 +44,32 @@ const CreateBlog = ({ setVisible, setBlogs, setErrorMessage }) => {
         <div>
                     title:
           <input
+            id="title"
             type="text"
             value={title}
             name="title"
             onChange={({ target }) => setTitle(target.value)}
+            placeholder="title"
           />
-                    author:<input
+                    author:
+          <input
+            id="author"
             type="text"
             value={author}
             name="author"
             onChange={({ target }) => setAuthor(target.value)}
+            placeholder="author"
           />
-                    url:<input
+                    url:
+          <input
+            id="url"
             type="text"
             value={url}
             name="url"
             onChange={({ target }) => setUrl(target.value)}
+            placeholder="url"
           />
-          <button type="submit">create</button>
+          <button id="createButton" type="submit">create</button>
         </div>
       </form>
     </div>

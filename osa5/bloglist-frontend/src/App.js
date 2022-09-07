@@ -44,6 +44,7 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
+      console.log(user)
     }
     catch (exception) {
       setErrorMessage('wrong username or password')
@@ -51,6 +52,21 @@ const App = () => {
         setErrorMessage(null)
       }, 5000)
     }
+  }
+
+  const like = async (blog) => {
+
+    // eslint-disable-next-line no-undef
+    const updated = structuredClone(blog)
+    delete updated.user
+    updated.user = blog.user.id
+    updated.likes += 1
+    await blogService.update(blog.id, updated)
+  }
+
+  const addBlog = async (blog) => {
+    await blogService.create(blog)
+    setBlogs(await blogService.getAll())
   }
 
   return (
@@ -69,12 +85,16 @@ const App = () => {
         <div>
           <p>{user.name} logged in</p>
           <LogOut/>
-          <BlogList blogs={blogs}/>
+          <BlogList
+            blogs={blogs}
+            like={like}
+            user={user.username}
+          />
           <Togglable buttonLabel="create new blog" ref={ref}>
             <CreateBlog
-              setBlogs={setBlogs}
               setErrorMessage={setErrorMessage}
               setVisible={ref}
+              addBlog={addBlog}
             />
           </Togglable>
         </div>
