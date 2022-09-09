@@ -63,7 +63,7 @@ describe('unicafe reducer', () => {
     })
   })
 
-  test('zero return initial state', () => {
+  test('zero returns initial state', () => {
     const action = {
       type: 'ZERO'
     }
