@@ -1,0 +1,24 @@
+GET http://localhost:3003/api/blogs
+###
+PUT http://localhost:3003/api/blogs/631f244deb0e87d6a11c4a95
+Content-Type: application/json
+
+{
+    "title": "asdasd",
+    "author": "asdasdasd",
+    "url": "asdasdasd",
+    "likes": 1,
+    "user": "63170f5a50015c1261c3aba5",
+    "id": "631f244deb0e87d6a11c4a95"
+  }
+###
+
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "aleksi",
+  "password": "elias"
+}
+
+
