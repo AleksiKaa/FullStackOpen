@@ -1,13 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import BlogList from './components/BlogList'
 import LoginForm from './components/LoginForm'
-import LogOut from './components/LogOut'
-import CreateBlog from './components/CreateBlog'
-import Togglable from './components/Togglable'
 import blogService from './services/blogs'
 import { initBlogs } from './reducers/blogsReducer'
 import { setUser } from './reducers/userReducer'
+import { getUsers } from './reducers/usersReducer'
+import Menu from './components/Menu'
 
 
 const App = () => {
@@ -16,10 +14,10 @@ const App = () => {
   const userState = useSelector(state => state.user)
 
   const dispatch = useDispatch()
-  const ref = useRef()
 
   useEffect(() => {
     dispatch(initBlogs())
+    dispatch(getUsers())
   }, [])
 
   useEffect(() => {
@@ -37,20 +35,10 @@ const App = () => {
       <h1>Blogs</h1>
       {userState.user === null ?
         <LoginForm/> :
-        <div>
-          <p>{userState.user.name} logged in</p>
-          <LogOut/>
-          <BlogList
-            blogs={blogs}
-            user={userState.user.username}
-          />
-          <Togglable buttonLabel="create new blog" ref={ref}>
-            <CreateBlog
-              setVisible={ref}
-            />
-          </Togglable>
-        </div>
-      }
+        <Menu
+          username={userState.user.username}
+          blogs={blogs}
+        />}
     </div>
   )
 }
